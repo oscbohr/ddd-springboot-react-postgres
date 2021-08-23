@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.challenge.app.tienda.OrderControllerTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.08 s - in com.challenge.app.tienda.OrderControllerTest

@@ -1,0 +1,41 @@
+# Spring Boot configuration
+spring:
+  profiles:
+    active: development
+  # Database
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://db:5432/testdb
+    username: postgres
+    password: 123456
+  # JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: none # When you launch the application for the first time - switch "none" at "create"
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: false
+# Logger configuration
+logging:
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+  level:
+    org.springframework: info
+    org.hibernate: error
+# Server configuration
+server:
+  port: 9080 #set your port
+  
+# Parametros
+placetopay:
+  login: 6dd490faf9cb87a9862245da41170ff2
+  trankey: 024h1IlD
+  endpoint: https://dev.placetopay.com/redirection/api/session
+  agente: Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:82.0) Gecko/20100101 Firefox/82.0
+  urlretorno: http://localhost:8080/orden
+  ipcliente: 127.0.0.1
+  document: 79666729
+  documenttype: CC
+  currency: COP
