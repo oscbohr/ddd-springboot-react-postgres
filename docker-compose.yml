@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./ml-orderpago-challenge/backend/Dockerfile
+    container_name: orderpago-backend
+    hostname: backend
+    network_mode: bridge
+    restart: always
+    expose:
+      - "9080"
+    ports:
+      - "9080:9080"
+    depends_on:
+      - "db"    
+    links:
+      - "db"      
+  db:
+    image: postgres:latest
+    network_mode: bridge    
+    hostname: db
+    container_name: orderpago-postgres    
+    restart: always
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    environment:
+         - POSTGRES_PASSWORD=123456
+         - POSTGRES_USER=postgres
+         - POSTGRES_DB=testdb
+  frontend:
+    build:
+      context: .
+      dockerfile: ./ml-orderpago-challenge/frontend/Dockerfile
+    container_name: orderpago-frontend
+    hostname: frontend
+    network_mode: bridge    
+    restart: always
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "backend"    
+    links:
+      - "backend"
+  

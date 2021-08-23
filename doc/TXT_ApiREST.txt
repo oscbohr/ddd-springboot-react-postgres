@@ -1,0 +1,104 @@
+txt de request y response de todo el API
+
+********************************************************************
+============================
+CrearOrden (POST)
+============================
+url:  http://localhost:8080/orders/
+Request:
+{
+    "id": 0,
+    "nombreCliente": "alejando",
+    "apellidoCliente": "huertas",
+    "emailCliente": "carlos@rodrig.com",
+    "movilCliente": "555555555"
+}
+
+Response:
+{
+    "id": 42,
+    "nombreCliente": "ALEJANDO HUERTAS",
+    "apellidoCliente": "ALEJANDO HUERTAS",
+    "emailCliente": "carlos@rodrig.com",
+    "movilCliente": "555555555",
+    "statusTransaccion": "CREATED",
+    "fechaCreacion": "2021-08-21T06:37:25.443+00:00",
+    "fechaActualizacion": "2021-08-21T06:37:25.443+00:00",
+    "transaccionOrder": null
+}
+
+
+********************************************************************
+============================
+CrearTransaccion (POST)
+============================
+url:  http://localhost:8080/orders/{id_order}/transaccion
+Request:
+  none
+
+Response:
+  https://dev.placetopay.com/redirection/session/43999/6c1dd222d848e3971b473a6f8a31619c
+
+
+
+********************************************************************
+============================
+ListarOrdenes (POST)
+============================
+url:  http://localhost:8080/orders/
+Request:
+  none
+
+Response:
+[
+    {
+        "id": 42,
+        "nombreCliente": "ALEJANDO HUERTAS",
+        "apellidoCliente": "ALEJANDO HUERTAS",
+        "emailCliente": "carlos@rodrig.com",
+        "movilCliente": "555555555",
+        "statusTransaccion": "CREATED",
+        "fechaCreacion": "2021-08-21T06:37:25.443+00:00",
+        "fechaActualizacion": "2021-08-21T06:37:25.443+00:00",
+        "transaccionOrder": {
+            "requestid": 43999,
+            "status": "PENDING"
+        }
+    },
+    {
+        "id": 47,
+        "nombreCliente": "OSCAR BOHORQUEZ",
+        "apellidoCliente": "OSCAR BOHORQUEZ",
+        "emailCliente": "osquitar@nada.com",
+        "movilCliente": "312456343",
+        "statusTransaccion": "CREATED",
+        "fechaCreacion": "2021-08-21T07:39:57.918+00:00",
+        "fechaActualizacion": "2021-08-21T07:39:57.918+00:00",
+        "transaccionOrder": null
+    }
+]
+
+
+********************************************************************
+============================
+ConsultarOrdersXId (GET)
+============================
+url:  http://localhost:8080/orders/{id_order}
+Request:
+  none:
+
+Response:
+{
+    "id": 42,
+    "nombreCliente": "ALEJANDO HUERTAS",
+    "apellidoCliente": "ALEJANDO HUERTAS",
+    "emailCliente": "carlos@rodrig.com",
+    "movilCliente": "555555555",
+    "statusTransaccion": "CREATED",
+    "fechaCreacion": "2021-08-21T06:37:25.443+00:00",
+    "fechaActualizacion": "2021-08-21T06:37:25.443+00:00",
+    "transaccionOrder": {
+        "requestid": 43999,
+        "status": "PENDING"
+    }
+}
