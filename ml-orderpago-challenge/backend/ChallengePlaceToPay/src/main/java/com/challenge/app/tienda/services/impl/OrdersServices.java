@@ -46,9 +46,6 @@ public class OrdersServices implements IGestorOrders {
 		return (orderDTO);
 	}
 	
-	
-	//NUEVO METODO crearTransaccion RETORNO retornar processURL y llega el idOrder
-	//aqui se debe de almacenar en la tabla nueva requestid, idOrder y status PENDING
 	@Override
 	@Transactional
 	public String crearTransaccion(Long id) throws PlaceToPayException{
@@ -99,12 +96,6 @@ public class OrdersServices implements IGestorOrders {
 		return listaOrders;
 	}
 
-	///// consutar la tabla order si es PAYED 
-	// si PAYED devuelva order
-	// Si no es PAYED O rechazada ==> consultar en tb_nueva si STATUS = PENDING
-//			Si es PENDING consultar tercero, si el tercero devuelve PENDING no hacer nada 
-//	        si no es PENDING (rechazado o aprovado) actualizar en nueva con nuevo status y en la tbOrder
-	@Override
 	@Transactional
 	public OrderDTO consultarOrderXid(Long id) throws PlaceToPayException {
 		OrderDTO orderDTO = null;
